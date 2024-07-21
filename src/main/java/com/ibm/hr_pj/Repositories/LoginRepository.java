@@ -7,5 +7,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import java.util.Optional;
 @EnableJpaRepositories
 public interface LoginRepository extends JpaRepository<Login,String> {
-Optional<Login> findLoginBystaffId(String staffId);
+Optional<Login> findLoginByEmployeeId(String employeeId);
+Login findByEmployeeId(String employeeId);
 }

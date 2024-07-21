@@ -22,7 +22,7 @@ import java.util.Collections;
 @Entity
 public class Login implements UserDetails {
     @Id
-    private String staffId;
+    private String employeeId;
     private String passwords;
     @Enumerated(EnumType.STRING)
     private EmployeeRole employeeRole;
@@ -40,7 +40,7 @@ public class Login implements UserDetails {
 
     @Override
     public String getUsername() {
-        return staffId;
+        return employeeId;
     }
 
     @Override

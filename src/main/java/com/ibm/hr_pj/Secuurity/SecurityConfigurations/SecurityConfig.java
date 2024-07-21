@@ -1,7 +1,7 @@
 package com.ibm.hr_pj.Secuurity.SecurityConfigurations;
 
 import com.ibm.hr_pj.Secuurity.PasswordEncoder;
-import com.ibm.hr_pj.Services.UserDetail;
+import com.ibm.hr_pj.Services.EmployeeDetailsService;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,14 +17,14 @@ import org.springframework.security.web.SecurityFilterChain;
 @AllArgsConstructor
 public class SecurityConfig {
     private final PasswordEncoder passwordEncoder;
-    private final UserDetail userDetailService;
+    private final EmployeeDetailsService userDetailService;
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .csrf()
                 .disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/")
+                .requestMatchers("/register/employee")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
