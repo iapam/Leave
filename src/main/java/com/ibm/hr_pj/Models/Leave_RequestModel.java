@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Leave {
+public class Leave_RequestModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
