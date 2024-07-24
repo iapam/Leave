@@ -19,5 +19,9 @@ public class EmployeeController {
         EmployeeDetailsRegistrationRequest employeeDetails=employeeDetailsService.employeeDetails(login);
         return employeeDetails;
     }
+    public String leaveRequest(){
+
+        return "leave applied successfully";
+    }
 
 }
