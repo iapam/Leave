@@ -1,7 +1,7 @@
 package com.ibm.hr_pj.Secuurity.SecurityConfigurations;
 
 import com.ibm.hr_pj.Secuurity.PasswordEncoder;
-import com.ibm.hr_pj.Services.EmployeeDetailsService;
+import com.ibm.hr_pj.Services.EmployeeService;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +17,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @AllArgsConstructor
 public class SecurityConfig {
     private final PasswordEncoder passwordEncoder;
-    private final EmployeeDetailsService userDetailService;
+    private final EmployeeService userDetailService;
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
@@ -29,7 +29,9 @@ public class SecurityConfig {
                 .anyRequest()
                 .authenticated()
                 .and()
-                .formLogin();
+                .formLogin()
+                .and()
+                .httpBasic();
 
 
        return httpSecurity.build();
