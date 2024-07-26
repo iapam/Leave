@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -14,12 +15,13 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Entity
 public class Leave_RequestModel {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String leaveType;
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
+    private LocalDate startDate;
+    private LocalDate endDate;
     private LocalDateTime dateApplied;
     private String nurseManagerStatus;
     private String administratorStatus;
@@ -27,4 +29,11 @@ public class Leave_RequestModel {
     @ManyToOne
     @JoinColumn
     private Login login;
+
+    public Leave_RequestModel(String leaveType, LocalDate startDate, LocalDateTime dateApplied,Login login) {
+        this.leaveType = leaveType;
+        this.startDate = startDate;
+        this.dateApplied = dateApplied;
+        this.login=login;
+    }
 }

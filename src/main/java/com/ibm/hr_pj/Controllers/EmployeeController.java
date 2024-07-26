@@ -25,11 +25,9 @@ public class EmployeeController {
         return employeeDetails;
     }
     @PostMapping("/apply/leave")
-public void leaveRequest(@RequestBody LeaveRequest leaveRequest) throws ParseException {
+public String leaveRequest(@RequestBody LeaveRequest leaveRequest) throws ParseException {
     Login login= (Login) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    employeeService.leaveApplication(leaveRequest);
-
-
-
+   String leaveApplication= employeeService.leaveApplication(leaveRequest,login);
+return leaveApplication;
 }
 }

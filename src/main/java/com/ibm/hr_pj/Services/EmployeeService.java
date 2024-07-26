@@ -3,8 +3,10 @@ package com.ibm.hr_pj.Services;
 import com.ibm.hr_pj.Dto.EmployeeDetailsRegistrationRequest;
 import com.ibm.hr_pj.Dto.LeaveRequest;
 import com.ibm.hr_pj.Models.EmployeeDetails;
+import com.ibm.hr_pj.Models.Leave_RequestModel;
 import com.ibm.hr_pj.Models.Login;
 import com.ibm.hr_pj.Repositories.EmployeeDetailsRepository;
+import com.ibm.hr_pj.Repositories.LeaveRequestModelRepository;
 import com.ibm.hr_pj.Repositories.LoginRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,6 +22,7 @@ import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.List;
 import java.util.StringJoiner;
 
 @Service
@@ -27,6 +30,7 @@ import java.util.StringJoiner;
 public class EmployeeService implements UserDetailsService {
     private final LoginRepository loginRepository;
     private final EmployeeDetailsRepository employeeDetailsRepository;
+    private final LeaveRequestModelRepository leaveRequestModelRepository;
     @Override
     public UserDetails loadUserByUsername(String staffId) throws UsernameNotFoundException {
 
@@ -42,13 +46,27 @@ public class EmployeeService implements UserDetailsService {
                 employeeDetails.getEmploymentType(), employeeDetails.getPhoneNumber(), employeeDetails.getEmail(),
                 employeeDetails.getAddress());
     }
-    public void leaveApplication(LeaveRequest leaveRequest) throws ParseException {
-        DateTimeFormatter dateTimeFormatter= DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate localDate=LocalDate.parse("2020-09-12",dateTimeFormatter);
-        Month month=Month.from(localDate);
-        DayOfWeek day=DayOfWeek.from(localDate);
-        System.out.println(day);
-        System.out.println(month);
+    public String leaveApplication(LeaveRequest leaveRequest,Login login) throws ParseException {
+        List<Leave_RequestModel>leaveRequestModels=leaveRequestModelRepository.findByLogin(login);
+        DateTimeFormatter dateTimeFormatter= DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        LocalDate startDate=LocalDate.parse(leaveRequest.getStartDate(),dateTimeFormatter);
+         String apply_year=String.valueOf(startDate.getYear());
+        for(Leave_RequestModel leaveRequestModel:leaveRequestModels){
+            String applied_year=String.valueOf(leaveRequestModel.getStartDate().getYear());
+            if(apply_year.equals(applied_year)){
+                return "you already applied for this year";
+            }
+        }
+        String thisYear=String.valueOf(LocalDate.now().getYear());
+        if(!thisYear.equals(apply_year)){
+            return "Leave application must be this year";
+        }
+        if(startDate.isBefore(LocalDate.now())){
+            return "Request date shouldn't before today or you cannot backdate";
+        }
+        leaveRequestModelRepository.save(new Leave_RequestModel(leaveRequest.getLeaveType(),
+                startDate,LocalDateTime.now(),login));
 
+        return "leave applied";
     }
 }
