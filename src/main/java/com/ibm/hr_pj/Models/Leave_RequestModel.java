@@ -26,14 +26,17 @@ public class Leave_RequestModel {
     private String nurseManagerStatus;
     private String administratorStatus;
     private String medSupStatus;
+    private String unitHeadStatus;
+    private String leaveStatus;
     @ManyToOne
     @JoinColumn
     private Login login;
 
-    public Leave_RequestModel(String leaveType, LocalDate startDate, LocalDateTime dateApplied,Login login) {
+    public Leave_RequestModel(String leaveType, LocalDate startDate, LocalDateTime dateApplied,String leaveStatus,Login login) {
         this.leaveType = leaveType;
         this.startDate = startDate;
         this.dateApplied = dateApplied;
         this.login=login;
+        this.leaveStatus=leaveStatus;
     }
 }

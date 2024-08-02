@@ -65,7 +65,7 @@ public class EmployeeService implements UserDetailsService {
             return "Request date shouldn't before today or you cannot backdate";
         }
         leaveRequestModelRepository.save(new Leave_RequestModel(leaveRequest.getLeaveType(),
-                startDate,LocalDateTime.now(),login));
+                startDate,LocalDateTime.now(),"pending",login));
 
         return "leave applied";
     }
