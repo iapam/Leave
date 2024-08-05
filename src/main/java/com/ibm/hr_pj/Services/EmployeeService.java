@@ -2,6 +2,7 @@ package com.ibm.hr_pj.Services;
 
 import com.ibm.hr_pj.Dto.EmployeeDetailsRegistrationRequest;
 import com.ibm.hr_pj.Dto.LeaveRequest;
+import com.ibm.hr_pj.Dto.StatusUpdateDto;
 import com.ibm.hr_pj.Models.EmployeeDetails;
 import com.ibm.hr_pj.Models.Leave_RequestModel;
 import com.ibm.hr_pj.Models.Login;
@@ -65,8 +66,36 @@ public class EmployeeService implements UserDetailsService {
             return "Request date shouldn't before today or you cannot backdate";
         }
         leaveRequestModelRepository.save(new Leave_RequestModel(leaveRequest.getLeaveType(),
-                startDate,LocalDateTime.now(),"pending",login));
+                startDate,LocalDateTime.now(),"pending","pending","pending","pending","pending",login));
 
         return "leave applied";
+    }
+
+    public String updateLeaveStatus(StatusUpdateDto statusUpdateDto, Login login) {
+        EmployeeDetails unitHead=employeeDetailsRepository.findEmployeeDetailsByLogin(login);
+        DateTimeFormatter formatter=DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        LocalDate endDate=LocalDate.parse(statusUpdateDto.getEndDate(),formatter);
+        if(unitHead.getUnit().equals(statusUpdateDto.getUnit())){
+            Leave_RequestModel empLeave=leaveRequestModelRepository.findLeave_RequestModelById(statusUpdateDto.getLeaveId());
+
+            if(statusUpdateDto.getStatus().equals("approved")){
+                if(empLeave.getStartDate().isAfter(endDate)){
+                    return "Start date cannot be after end date";
+                }
+            leaveRequestModelRepository.updateUnitHeadStatusApproved(statusUpdateDto.getStatus(), statusUpdateDto.isReplacementNeeded(),
+                    endDate,LocalDate.now(), statusUpdateDto.getLeaveId(),null);
+                return "This leave has been approved";
+            }else {
+                if(statusUpdateDto.getReason()==null){
+                    return "Specify reasons";
+                }
+               leaveRequestModelRepository.updateUnitHeadStatusDenied(statusUpdateDto.getStatus(),
+                       statusUpdateDto.getReason(),LocalDate.now(),statusUpdateDto.getLeaveId(),null,false);
+               return "This leave has been denied";
+            }
+
+        }else {
+            return "Employee not from your unit";
+        }
     }
 }

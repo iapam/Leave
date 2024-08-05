@@ -13,7 +13,7 @@ public class LoginRegistrationService {
     private LoginRepository loginRepository;
     private PasswordEncoder passwordEncoder;
     public Login loginDetails(Login login) {
-        Login userexist=loginRepository.findByEmployeeId(login.getEmployeeId());
+        Login userexist=loginRepository.findByEmployeeIdOrPhoneNumber(login.getEmployeeId(),login.getPhoneNumber());
         if(userexist==null){
            login.setPasswords( passwordEncoder.passwordEncoder().encode(login.getPasswords()));
         }else {

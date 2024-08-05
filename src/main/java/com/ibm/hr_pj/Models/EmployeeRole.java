@@ -5,5 +5,6 @@ public enum EmployeeRole {
     ADMINISTRATOR,
     NURSE_MANAGER,
     HR,
-    MEDSUP
+    MEDSUP,
+    UNIT_HEAD
 }

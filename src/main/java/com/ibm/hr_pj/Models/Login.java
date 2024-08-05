@@ -24,6 +24,7 @@ public class Login implements UserDetails {
     @Id
     private String employeeId;
     private String passwords;
+    private String phoneNumber;
     @Enumerated(EnumType.STRING)
     private EmployeeRole employeeRole;
 

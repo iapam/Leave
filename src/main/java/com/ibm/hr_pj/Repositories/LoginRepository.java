@@ -8,5 +8,5 @@ import java.util.Optional;
 @EnableJpaRepositories
 public interface LoginRepository extends JpaRepository<Login,String> {
 Optional<Login> findLoginByEmployeeId(String employeeId);
-Login findByEmployeeId(String employeeId);
+Login findByEmployeeIdOrPhoneNumber(String employeeId,String phone);
 }

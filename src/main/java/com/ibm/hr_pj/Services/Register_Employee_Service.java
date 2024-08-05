@@ -14,13 +14,13 @@ import java.util.Random;
 public class Register_Employee_Service {
     private LoginRegistrationService loginRegistrationService;
     private EmployeeDetailsRegistration employeeDetailsRegistration;
-    public String registerEmployeeService(Register_Employee_Request employeeRequest) {
+    public String registerEmployeeService(Register_Employee_Request employeeRequest,EmployeeRole employeeRole) {
         if(employeeRequest.getEmploymentType().equals("Contract")){
             Random rand = new Random();
             String id=String.format("%08d", rand.nextInt(100000000));
             employeeRequest.setEmployeeId(id);
         }
-      Login login=loginRegistrationService.loginDetails(new Login(employeeRequest.getEmployeeId(), employeeRequest.getPassword(), EmployeeRole.EMPLOYEE));
+      Login login=loginRegistrationService.loginDetails(new Login(employeeRequest.getEmployeeId(), employeeRequest.getPassword(), employeeRequest.getPhoneNumber(),employeeRole));
       if(login==null){
           return "Employee Already Registered";
       }
