@@ -28,7 +28,7 @@ public class Leave_RequestModel {
     private LocalDate statusUpdateDateM;
     private LocalDateTime dateApplied;
     private String nurseManagerStatus;
-    private String administratorStatus;
+    private long numberOfDays;
     private String medSupStatus;
     private String unitHeadStatus;
     private String leaveStatus;
@@ -38,17 +38,18 @@ public class Leave_RequestModel {
     @JoinColumn
     private Login login;
 
-    public Leave_RequestModel(String leaveType, LocalDate startDate, LocalDateTime dateApplied,
-                              String leaveStatus,String nurseManagerStatus,String administratorStatus,String unitHeadStatus,
+    public Leave_RequestModel(String leaveType, LocalDate startDate, LocalDate endDate,LocalDateTime dateApplied,
+                              String leaveStatus,String nurseManagerStatus,long numberOfDays,String unitHeadStatus,
                               String medSupStatus,Login login) {
         this.leaveType = leaveType;
         this.startDate = startDate;
         this.dateApplied = dateApplied;
+        this.endDate=endDate;
         this.login=login;
         this.leaveStatus=leaveStatus;
         this.nurseManagerStatus=nurseManagerStatus;
         this.unitHeadStatus=unitHeadStatus;
-        this.administratorStatus=administratorStatus;
+        this.numberOfDays=numberOfDays;
         this.medSupStatus=medSupStatus;
     }
 }

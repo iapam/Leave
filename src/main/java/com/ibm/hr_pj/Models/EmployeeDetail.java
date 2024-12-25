@@ -8,7 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class EmployeeDetails {
+public class EmployeeDetail {
     @Id
     private String phoneNumber;
     private String name;
@@ -22,4 +22,7 @@ public class EmployeeDetails {
     @ManyToOne
     @JoinColumn
     private Login login;
+    private long numberOfDaysEntitled;
+    private String status;
+    private String department;
 }

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Responsive Registration Form</title>
+    <meta name="viewport" content="width=device-width,
+      initial-scale=1.0"/>
+    <style>
+      *{
+        box-sizing: border-box;
+      }
+      body{
+        background: url(/images/Konongo.jpg);
+        background-size: cover;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #333;
+        font-size: 13px;
+        margin: 0;
+      }
+      input,select,button{
+        font-family: Arial, Helvetica, sans-serif;
+        color:#333;
+        font-size: 14px;
+      }
+      h4,h3{
+        margin: 0;
+      }
+      img{
+        max-width: 100%;
+      }
+      :focus{
+        outline: none;
+      }
+     .wrapper{
+      margin-top: 30px;
+     }
+      .inner{
+        padding: 20px;
+        background: #fff;
+        max-width: 950px;
+        margin: auto;
+        display: flex;
+      }
+      .inner .image-holder{
+        width: 50%;
+       
+
+      }
+      .inner form{
+        width: 50%;
+        padding-top: 36px;
+        padding-left: 45px;
+        padding-right: 45px;
+      }
+      .inner h3{
+        font-size: 25px;
+        text-align: center;
+        margin-bottom: 28px;
+      }
+      .form-group{
+        display: flex;
+      }
+      .form-group input{
+        width: 50%;
+      }
+      .form-group input:first-child{
+        margin-right: 25px;
+      }
+      .form-wrapper{
+        position: relative;
+      }
+      .form-control{
+        border: 1px solid #333;
+        border: none;
+        border-bottom: 1px solid #333;
+        display: block;
+        width: 100%;
+        height: 30px;
+        padding-right: 0;
+        margin-bottom: 25px;
+      }
+      .form-controls{
+      display: none;
+      }
+      select{
+        cursor: pointer;
+        border: 1px solid #333;
+        border: none;
+        border-bottom: 1px solid #333;
+        display: block;
+        width: 100%;
+        height: 30px;
+        padding-right: 0;
+        margin-bottom: 25px;
+      
+      }
+      select option[value=""] [disabled]{
+        display: none;
+      }
+      button{
+        border: none;
+        width: 164px;
+        height: 51px;
+        margin: auto;
+        margin-top: 40px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-left: 0;
+        background: #333;
+        font-size: 15px;
+        color: #fff;
+      }
+      @media (max-width:767px){
+        .inner{
+          display: block;
+        }
+        .inner .image-holder{
+          width: 100%;
+        }
+        .inner form{
+          width: 100%;
+          padding: 40px 0 30px;
+        }
+        button{
+          margin-top: 60px;
+        }
+      }
+      
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+      <div class="inner">
+        <div class="image-holder">
+          <img src="/images/K.webp" alt="image" style="border-radius: 5%;  height:100%;">
+        </div>
+          <h4 th:text="${response}"></h4>
+        <form method="post" action="/register/employee">
+            <h3>Registration Form</h3>
+            <div class="form-group">
+                <input type="text" name="name" placeholder="First Name" class="form-control">
+                <input type="text" placeholder="Surname" class="form-control">
+            </div>
+            <div class="form-wrapper">
+              <select name="employmentType"  class="form-control" onchange="enableBrand(this)">
+                <option value="" disabled selected>Select Employee Type</option>
+                <option value="Perminent">Perminent Worker</option>
+                <option value="Casual">Casual Worker</option>
+          
+              </select>
+          <div class="form-wrapper">
+              <input type="text" name="employeeId" placeholder="Employee ID" id="Perminent" class="form-control"/>
+            </div>
+               <select name=""  class="form-control" onchange="enableBrand(this)">
+                <option value="" disabled selected>Select Department</option>
+                <option value="Administration">Administration</option>
+                <option value="Nursing">Nursing</option>
+                <option value="Medical Officers">Medical Officers</option>
+              </select>
+               </select>
+               <select name="unit" id="" class="form-control" onchange="enableBrand(this)">
+                <option value="" disabled selected>Select Unit</option>
+                <option value="IT">IT</option>
+                <option value="General Nurse">General Nurse</option>
+                <option value="Midwifery">Midwifery</option>
+              </select>
+               </select>
+               <select name="grade" id="" class="form-control" onchange="enableBrand(this)">
+                <option value="" disabled selected>Select Grade</option>
+                <option value="SSN">SSN</option>
+                <option value="SSN">SSN</option>
+                <option value="SSN">SSN</option>
+              </select>
+               </select>
+               <select name="profession" id="" class="form-control" onchange="enableBrand(this)">
+                <option value="" disabled selected>Select Profession</option>
+                <option value="General Nurse">General Nurse</option>
+                <option value="Medical Officer">Medical Officer</option>
+                <option value="IT Manager">IT Manager</option>
+              </select>
+             <input type="text" name="phoneNumber" placeholder="Phone Number" maxlength="10"class="form-control">
+             <input type="text" name="address" placeholder="address"class="form-control">
+             
+             <input type="text" name="numberOfDaysEntitled" placeholder="Number of Employee is Entitle for Leave" maxlength="10"class="form-control">
+             <input type="email" name="email" placeholder="Email"class="form-control">
+            <div class="form-wrapper">
+              <input type="password" name="password" placeholder="password" class="form-control">
+            </div>
+            <button>Register</button>
+        </form>
+      </div>
+    </div>
+    <script type="text/javascript">
+    function enableBrand(answer){
+    if(answer.value=='Perminent'){
+      console.log(answer.value);
+      document.getElementById('Perminent').classList.remove('form-controls');
+    }else{
+      document.getElementById('Perminent').classList.add('form-controls'); 
+    }
+    };
+    </script>
+</body>
+</html>

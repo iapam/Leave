@@ -18,4 +18,6 @@ public class Register_Employee_Request {
     private String email;
     private String address;
     private String password;
+    private long numberOfDaysEntitled;
+    private String department;
 }

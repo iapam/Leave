@@ -16,9 +16,9 @@ public interface LeaveRequestModelRepository extends JpaRepository<Leave_Request
     @Modifying
     @Transactional
     @Query("update Leave_RequestModel set unitHeadStatus=:unitHeadStatus,replacementNeeded=:replacement," +
-            "endDate=:endDate,statusUpdateDateU=:updateDate,reasons=:reasons where id=:leaveID")
-    void updateUnitHeadStatusApproved(String unitHeadStatus, boolean replacement, LocalDate endDate,
-                              LocalDate updateDate,Long leaveID,String reasons);
+            "statusUpdateDateU=:updateDate,reasons=:reasons,numberOfDays=:numberOfDays where id=:leaveID")
+    void updateUnitHeadStatusApproved(String unitHeadStatus, boolean replacement,
+                              LocalDate updateDate,Long leaveID,String reasons,long numberOfDays);
     @Modifying
     @Transactional
     @Query("update Leave_RequestModel set unitHeadStatus=:unitHeadStatus," +

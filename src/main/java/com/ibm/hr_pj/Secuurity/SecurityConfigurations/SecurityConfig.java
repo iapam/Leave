@@ -10,6 +10,7 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.web.SecurityFilterChain;
 
 @EnableWebSecurity
@@ -24,9 +25,9 @@ public class SecurityConfig {
                 .csrf()
                 .disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/register/employee","/register/unit/head")
+                .requestMatchers("/register/employee","/register/unit/head","/register/administrator","/register/employee/page")
                 .permitAll()
-                .requestMatchers("/leave/updateStatus")
+                .requestMatchers("/leave/updateStatus","/leave/updatemedsup")
                 .hasAuthority("UNIT_HEAD")
                 .anyRequest()
                 .authenticated()
@@ -35,8 +36,12 @@ public class SecurityConfig {
                 .and()
                 .httpBasic();
 
-
        return httpSecurity.build();
+    }
+    @Bean
+    public WebSecurityCustomizer webSecurityCustomizer(){
+        return (web)->web.ignoring().requestMatchers("/images/**").requestMatchers("/static/images/css/assets/**").
+                requestMatchers("/static/images/js/assets/**");
     }
     @Bean
     public AuthenticationProvider authenticationProvider(){
