@@ -8,11 +8,11 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@ToString
 public class EmployeeDetail {
     @Id
     private String phoneNumber;
     private String name;
-    private String unit;
     private String annualSalary;
     private String grade;
     private String profession;
@@ -24,5 +24,11 @@ public class EmployeeDetail {
     private Login login;
     private long numberOfDaysEntitled;
     private String status;
-    private String department;
+    @ManyToOne
+    @JoinColumn
+    private Unit unitId;
+    @ManyToOne
+    @JoinColumn
+    private Departments departments;
+
 }

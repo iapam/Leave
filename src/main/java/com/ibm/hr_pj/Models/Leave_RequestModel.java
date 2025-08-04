@@ -1,10 +1,7 @@
 package com.ibm.hr_pj.Models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -14,6 +11,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@ToString
 public class Leave_RequestModel {
 
     @Id
@@ -26,21 +24,24 @@ public class Leave_RequestModel {
     private LocalDate statusUpdateDateA;
     private LocalDate statusUpdateDateN;
     private LocalDate statusUpdateDateM;
-    private LocalDateTime dateApplied;
+    private String dateApplied;
     private String nurseManagerStatus;
     private long numberOfDays;
     private String medSupStatus;
-    private String unitHeadStatus;
+    private String supervisorStatus;
     private String leaveStatus;
     private String reasons;
     private boolean replacementNeeded;
     @ManyToOne
     @JoinColumn
+    private Departments department;
+    @ManyToOne
+    @JoinColumn
     private Login login;
 
-    public Leave_RequestModel(String leaveType, LocalDate startDate, LocalDate endDate,LocalDateTime dateApplied,
-                              String leaveStatus,String nurseManagerStatus,long numberOfDays,String unitHeadStatus,
-                              String medSupStatus,Login login) {
+    public Leave_RequestModel(String leaveType, LocalDate startDate, LocalDate endDate,String dateApplied,
+                              String leaveStatus,String nurseManagerStatus,long numberOfDays,String supervisorStatus,
+                              String medSupStatus,Login login,Departments department) {
         this.leaveType = leaveType;
         this.startDate = startDate;
         this.dateApplied = dateApplied;
@@ -48,8 +49,9 @@ public class Leave_RequestModel {
         this.login=login;
         this.leaveStatus=leaveStatus;
         this.nurseManagerStatus=nurseManagerStatus;
-        this.unitHeadStatus=unitHeadStatus;
+        this.supervisorStatus=supervisorStatus;
         this.numberOfDays=numberOfDays;
         this.medSupStatus=medSupStatus;
+        this.department=department;
     }
 }

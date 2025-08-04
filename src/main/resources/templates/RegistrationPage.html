@@ -144,7 +144,7 @@
                 <input type="text" placeholder="Surname" class="form-control">
             </div>
             <div class="form-wrapper">
-              <select name="employmentType"  class="form-control" onchange="enableBrand(this)">
+              <select id="employmentType" name="employmentType"  class="form-control" onchange="enableBrand(this)">
                 <option value="" disabled selected>Select Employee Type</option>
                 <option value="Perminent">Perminent Worker</option>
                 <option value="Casual">Casual Worker</option>
@@ -153,33 +153,25 @@
           <div class="form-wrapper">
               <input type="text" name="employeeId" placeholder="Employee ID" id="Perminent" class="form-control"/>
             </div>
-               <select name=""  class="form-control" onchange="enableBrand(this)">
-                <option value="" disabled selected>Select Department</option>
-                <option value="Administration">Administration</option>
-                <option value="Nursing">Nursing</option>
-                <option value="Medical Officers">Medical Officers</option>
-              </select>
-               </select>
-               <select name="unit" id="" class="form-control" onchange="enableBrand(this)">
-                <option value="" disabled selected>Select Unit</option>
-                <option value="IT">IT</option>
-                <option value="General Nurse">General Nurse</option>
-                <option value="Midwifery">Midwifery</option>
-              </select>
-               </select>
-               <select name="grade" id="" class="form-control" onchange="enableBrand(this)">
+                <select id="department" name="department" class="form-control" onchange="filterUnits()">
+                    <option value="" disabled selected>Select Department</option>
+                    <option value="Administration">Administration</option>
+                    <option value="Nursing">Nursing</option>
+                    <option value="Medical Officers">Medical Officers</option>
+                </select>
+                <select id="unit" name="unit" class="form-control">
+                    <option value="" disabled selected>Select Unit</option>
+                </select>
+               <select name="grade" class="form-control" >
                 <option value="" disabled selected>Select Grade</option>
                 <option value="SSN">SSN</option>
                 <option value="SSN">SSN</option>
                 <option value="SSN">SSN</option>
               </select>
                </select>
-               <select name="profession" id="" class="form-control" onchange="enableBrand(this)">
-                <option value="" disabled selected>Select Profession</option>
-                <option value="General Nurse">General Nurse</option>
-                <option value="Medical Officer">Medical Officer</option>
-                <option value="IT Manager">IT Manager</option>
-              </select>
+                <select id="profession" name="profession" class="form-control">
+                    <option value="" disabled selected>Select Profession</option>
+                </select>
              <input type="text" name="phoneNumber" placeholder="Phone Number" maxlength="10"class="form-control">
              <input type="text" name="address" placeholder="address"class="form-control">
              
@@ -194,13 +186,55 @@
     </div>
     <script type="text/javascript">
     function enableBrand(answer){
-    if(answer.value=='Perminent'){
+        const employmentType = document.getElementById('employmentType').value;
+        const employeeIdInput = document.getElementById('Perminent');
+    if(employmentType==='Perminent'){
       console.log(answer.value);
-      document.getElementById('Perminent').classList.remove('form-controls');
+      employeeIdInput.classList.remove('form-controls');
     }else{
-      document.getElementById('Perminent').classList.add('form-controls'); 
+      employeeIdInput.classList.add('form-controls');
     }
-    };
+    }
+    function filterUnits() {
+        const department = document.getElementById('department').value;
+        const unitSelect = document.getElementById('unit');
+        const professionSelect = document.getElementById('profession');
+
+        // Clear previous options
+        unitSelect.innerHTML = '<option value="" disabled selected>Select Unit</option>';
+        professionSelect.innerHTML = '<option value="" disabled selected>Select Profession</option>';
+
+
+        // Define unit options based on department
+        const unitsByDepartment = {
+            Administration: ['IT','General Office','Cleaners','Labour'],
+            Nursing: ['Males Ward', 'Females Ward','Kids Ward'],
+            'Medical Officers': ['General Practice', 'Physician Assistant'] // Optional addition
+        };
+        const professionsByDepartment = {
+            Administration: ['IT Manager', 'Administrator'],
+            Nursing: ['General Nurse', 'Midwife'],
+            'Medical Officers': ['Medical Officer', 'Surgeon']
+        };
+
+        if (unitsByDepartment[department]) {
+            unitsByDepartment[department].forEach(unit => {
+                const option = document.createElement('option');
+                option.value = unit;
+                option.text = unit;
+                unitSelect.appendChild(option);
+            });
+        }
+        if (professionsByDepartment[department]) {
+            professionsByDepartment[department].forEach(profession => {
+                const option = document.createElement('option');
+                option.value = profession;
+                option.text = profession;
+                professionSelect.appendChild(option);
+            });
+        }
+    }
+
     </script>
 </body>
 </html>

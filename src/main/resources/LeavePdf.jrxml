@@ -1,0 +1,219 @@
+<!-- Created with Jaspersoft Studio version 7.0.3.final using JasperReports Library version 7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd  -->
+<jasperReport name="Blank_A4" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d763dac7-164e-4813-a46a-cc8a33498cfb">
+    <field name="unit" class="java.lang.String"></field>
+    <field name="staffID" class="java.lang.String"></field>
+    <field name="surname" class="java.lang.String"></field>
+    <field name="otherNames" class="java.lang.String"></field>
+    <field name="annualSalary" class="java.lang.String"></field>
+    <field name="grade" class="java.lang.String"></field>
+    <field name="profession" class="java.lang.String"></field>
+    <field name="speciality" class="java.lang.String"></field>
+    <field name="employeeType" class="java.lang.String"></field>
+    <field name="effectiveDateForLeave" class="java.time.LocalDate"></field>
+    <field name="dateResume" class="java.time.LocalDate"></field>
+    <field name="address" class="java.lang.String"></field>
+    <field name="phoneNumber" class="java.lang.String"></field>
+    <field name="dateApplied" class="java.lang.String"></field>
+    <field name="status" class="java.lang.String"></field>
+    <field name="numberOfDaysRecommended" class="java.lang.Long"></field>
+    <field name="replacementNeeded" class="java.lang.Boolean"></field>
+    <field name="supervisorName" class="java.lang.String"></field>
+    <field name="dateRecommended" class="java.time.LocalDate"></field>
+    <field name="numberOfDaysApproved" class="java.lang.Long"></field>
+    <field name="commencementDate" class="java.time.LocalDate"></field>
+    <field name="endDate" class="java.time.LocalDate"></field>
+    <field name="resumptionDate" class="java.time.LocalDate"></field>
+    <field name="medSupName" class="java.lang.String"></field>
+    <field name="dateApproved" class="java.lang.String"></field>
+    <property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+    <query language="SQL"><![CDATA[]]></query>
+    <background splitType="Stretch"/>
+    <title height="90" splitType="Stretch">
+        <element kind="staticText" uuid="b38b0fde-ae9e-4ec2-9aa2-88984624e9d6" x="110" y="20" width="230" height="40" fontSize="18.0" bold="true" hTextAlign="Center">
+            <text><![CDATA[ANNUAL LEAVE]]></text>
+        </element>
+        <element kind="staticText" uuid="763a1acf-fd26-4bcb-91a0-176f0632e2d0" x="-5" y="50" width="565" height="30" fontSize="18.0" bold="true" hTextAlign="Center">
+            <text><![CDATA[ASANTE AKIM CENTRAL MUNICIPAL HOSPITAL]]></text>
+        </element>
+        <element kind="image" uuid="f5f32bb7-ed31-4ae1-aff2-83d78adb0ed7" x="-11" y="0" width="80" height="70">
+            <expression><![CDATA["C:\\Users\\Himself\\Downloads\\logo.jpg"]]></expression>
+        </element>
+        <element kind="image" uuid="cdcf9013-868c-4715-b9d0-c669b8fed8ee" x="490" y="0" width="80" height="70">
+            <expression><![CDATA["C:\\Users\\Himself\\Downloads\\logo.jpg"]]></expression>
+        </element>
+    </title>
+    <pageHeader height="120" splitType="Stretch">
+        <element kind="staticText" uuid="8caae77d-94df-4341-ba45-96a1c2fba599" x="1" y="7" width="195" height="23" fontSize="15.0">
+            <text><![CDATA[Department/unit/sub-district:]]></text>
+        </element>
+        <element kind="textField" uuid="d6d2bd84-f3c4-4604-b2ce-bebf598ecaed" x="190" y="7" width="380" height="23" fontSize="15.0">
+            <expression><![CDATA[$F{unit}]]></expression>
+        </element>
+        <element kind="staticText" uuid="65ef1660-2d3d-4617-80c8-4c9152409ed4" x="1" y="30" width="100" height="20" fontSize="15.0">
+            <text><![CDATA[Staff number:]]></text>
+        </element>
+        <element kind="textField" uuid="bcab321d-5f39-4b1f-b5ee-24925c50f656" x="100" y="30" width="480" height="20" fontSize="15.0">
+            <expression><![CDATA[$F{staffID}]]></expression>
+        </element>
+        <element kind="staticText" uuid="976798ee-ddad-40fa-9532-d9c0336e24ca" x="1" y="50" width="86" height="20" fontSize="15.0">
+            <text><![CDATA[Surname:]]></text>
+        </element>
+        <element kind="textField" uuid="dc587f96-43bd-4aa3-a35d-ea876963ed8c" x="100" y="50" width="200" height="20" fontSize="15.0">
+            <expression><![CDATA[$F{surname}]]></expression>
+        </element>
+        <element kind="staticText" uuid="69343eb0-103d-45b2-8781-199886a8cc15" x="280" y="50" width="120" height="20" fontSize="15.0">
+            <text><![CDATA[Other names:]]></text>
+        </element>
+        <element kind="textField" uuid="704844ab-94fd-4847-8f2b-cf58d3bccc47" x="380" y="50" width="190" height="20" fontSize="15.0">
+            <expression><![CDATA[$F{otherNames}]]></expression>
+        </element>
+        <element kind="staticText" uuid="92a84958-7a9b-4789-89f9-e9d0fc754586" x="1" y="98" width="55" height="20" fontSize="15.0">
+            <text><![CDATA[Grade:]]></text>
+        </element>
+        <element kind="textField" uuid="957c0ebc-45ab-48a5-9748-5c2769e5600c" x="100" y="100" width="220" height="20" fontSize="15.0">
+            <expression><![CDATA[$F{grade}]]></expression>
+        </element>
+        <element kind="staticText" uuid="cf007ddc-782d-4f21-aede-c89df39a349a" x="280" y="97" width="90" height="20" fontSize="15.0">
+            <text><![CDATA[Profession:]]></text>
+        </element>
+        <element kind="textField" uuid="022e4b4f-3964-43b9-9021-877b51bab9d9" x="380" y="97" width="190" height="23" fontSize="15.0">
+            <expression><![CDATA[$F{profession}]]></expression>
+        </element>
+        <element kind="staticText" uuid="e3149e66-6efc-4fe8-9a9d-3fbf1595de8c" x="1" y="70" width="115" height="20" fontSize="12.0">
+            <text><![CDATA[(Write Name in Full)]]></text>
+        </element>
+        <element kind="staticText" uuid="ba1bc929-bf9d-45de-bb88-6f44451b9ec9" x="400" y="70" width="110" height="20" fontSize="12.0">
+            <text><![CDATA[Annual Salary(GHS):]]></text>
+        </element>
+        <element kind="textField" uuid="0495bbbf-307a-47ba-a8b9-13aeda87c4ed" x="510" y="70" width="60" height="20" fontSize="13.0">
+            <expression><![CDATA[$F{annualSalary}]]></expression>
+        </element>
+    </pageHeader>
+    <columnHeader height="109" splitType="Stretch">
+        <element kind="staticText" uuid="8f115c16-cb38-4f22-aa40-3c2ad503fb35" x="1" y="11" width="70" height="20" fontSize="15.0">
+            <text><![CDATA[Specialty:]]></text>
+        </element>
+        <element kind="textField" uuid="daf3ebfa-575d-4012-b1fc-d2443aca66f2" x="100" y="10" width="510" height="23" fontSize="15.0">
+            <expression><![CDATA[$F{speciality}]]></expression>
+        </element>
+        <element kind="staticText" uuid="f8fc55e1-b41b-4345-9cca-a1749ca9f3e9" x="1" y="40" width="150" height="20" fontSize="15.0">
+            <text><![CDATA[Employee type:]]></text>
+        </element>
+        <element kind="textField" uuid="c415cbf0-7d5c-4e51-8198-d39bf6021407" x="110" y="40" width="460" height="20" fontSize="15.0">
+            <expression><![CDATA[$F{employeeType}]]></expression>
+        </element>
+        <element kind="textField" uuid="f3f8707e-c74e-4f63-911b-7c44db349e23" x="170" y="80" width="160" height="26" fontSize="15.0">
+            <expression><![CDATA[$F{effectiveDateForLeave}]]></expression>
+        </element>
+        <element kind="staticText" uuid="5cc51ce4-6448-4144-ade5-d6c1e0b913b5" x="1" y="80" width="220" height="28" fontSize="15.0">
+            <text><![CDATA[Effective date for leave:]]></text>
+        </element>
+        <element kind="staticText" uuid="240b3d08-0011-4906-97c3-ea33c10e752d" x="310" y="80" width="150" height="28" fontSize="15.0">
+            <text><![CDATA[Date resume:]]></text>
+        </element>
+        <element kind="textField" uuid="49134a94-7233-4725-9d02-5763b4200ec9" x="410" y="80" width="160" height="28" fontSize="15.0">
+            <expression><![CDATA[$F{dateResume}]]></expression>
+        </element>
+    </columnHeader>
+    <detail>
+        <band height="477" splitType="Stretch">
+            <element kind="staticText" uuid="800fea1a-732b-43f3-92ec-f6b4548c37a0" x="1" y="0" width="146" height="23" fontSize="15.0">
+                <text><![CDATA[Address during leave:]]></text>
+            </element>
+            <element kind="textField" uuid="df8f8239-a6da-4e4b-b3c3-c7ff3e48b6b8" x="150" y="0" width="402" height="24" fontSize="15.0">
+                <expression><![CDATA[$F{address}]]></expression>
+            </element>
+            <element kind="staticText" uuid="a2390f2e-0ac5-47b5-bfab-df938f55bc91" x="1" y="30" width="150" height="20" fontSize="15.0">
+                <text><![CDATA[Telephone No.:]]></text>
+            </element>
+            <element kind="textField" uuid="b3c1e3d7-1551-4330-a441-cff0aa3bb603" x="120" y="31" width="193" height="19" fontSize="15.0">
+                <expression><![CDATA[$F{phoneNumber}]]></expression>
+            </element>
+            <element kind="staticText" uuid="f8b8a45c-8671-44a7-b99f-4fccbb504045" x="280" y="31" width="40" height="19" fontSize="15.0">
+                <text><![CDATA[Date:]]></text>
+            </element>
+            <element kind="textField" uuid="7b3b3050-cc61-4dd2-8473-23c102c8abb6" x="320" y="31" width="232" height="19" fontSize="15.0">
+                <expression><![CDATA[$F{dateApplied}]]></expression>
+            </element>
+            <element kind="staticText" uuid="4b6ffd16-4ad2-4e26-a392-0ce492d295eb" x="-13" y="80" width="580" height="40" fontSize="13.0">
+                <text><![CDATA[Recommendation by supervising officer etc(this could be head of department,sub-district head,DDHS,Mesdical Superintendent,etc)]]></text>
+            </element>
+            <element kind="staticText" uuid="5ab810db-365e-4143-985f-d6a7f24e67e8" x="1" y="56" width="146" height="30" fontSize="15.0">
+                <text><![CDATA[Signature of applicant]]></text>
+            </element>
+            <element kind="staticText" uuid="6c05d32e-cc5a-4ec4-9376-b896c6f18498" x="140" y="56" width="280" height="30" fontSize="15.0">
+                <text><![CDATA[................................................................................]]></text>
+            </element>
+            <element kind="staticText" uuid="1a885d71-2b25-4835-b071-e4ce919d33c1" x="1" y="120" width="50" height="24" fontSize="15.0">
+                <text><![CDATA[Status:]]></text>
+            </element>
+            <element kind="textField" uuid="ac12a4c0-439a-4ed1-ae47-61b4a5e5275d" x="50" y="120" width="140" height="24" fontSize="15.0">
+                <expression><![CDATA[$F{status}]]></expression>
+            </element>
+            <element kind="staticText" uuid="2a94552d-2f18-4f10-bece-90eb2126b823" x="171" y="119" width="280" height="27" fontSize="15.0">
+                <text><![CDATA[Number of days Recommended:]]></text>
+            </element>
+            <element kind="textField" uuid="af7e8999-c5dd-45b3-971d-296bb6f0cb6c" x="390" y="119" width="164" height="27" fontSize="15.0">
+                <expression><![CDATA[$F{numberOfDaysRecommended}]]></expression>
+            </element>
+            <element kind="staticText" uuid="87b61544-3ead-4dca-bdfc-c8cd4fc222c6" x="1" y="157" width="170" height="26" fontSize="15.0">
+                <text><![CDATA[Replacement Needed:]]></text>
+            </element>
+            <element kind="textField" uuid="3e55870d-96a3-4e16-ad33-794d68b4cacc" x="160" y="157" width="180" height="26" fontSize="15.0">
+                <expression><![CDATA[$F{replacementNeeded}]]></expression>
+            </element>
+            <element kind="textField" uuid="11d76eaf-8eee-4e97-89d0-bc960e4c0956" x="70" y="200" width="278" height="23" fontSize="15.0">
+                <expression><![CDATA[$F{supervisorName}]]></expression>
+            </element>
+            <element kind="textField" uuid="0311cb67-ca03-4271-b5e9-1f13a9ab304c" x="360" y="200" width="272" height="23" fontSize="15.0">
+                <expression><![CDATA[$F{dateRecommended}]]></expression>
+            </element>
+            <element kind="staticText" uuid="754fcef1-8e5c-438e-8d8f-97927820e250" x="-18" y="220" width="278" height="30" fontSize="15.0" hTextAlign="Center">
+                <text><![CDATA[Name of supervising officer]]></text>
+            </element>
+            <element kind="staticText" uuid="2799969d-2390-459e-9096-c44dd971a40c" x="300" y="223" width="190" height="27" fontSize="15.0" hTextAlign="Center">
+                <text><![CDATA[Date]]></text>
+            </element>
+            <element kind="staticText" uuid="42a99e68-0983-4bde-b057-129eea738879" x="-10" y="240" width="565" height="19" fontSize="12.0">
+                <text><![CDATA[Approved by RDHS/DDHS/Medical Superintendent]]></text>
+            </element>
+            <element kind="staticText" uuid="5d8dd393-cdfd-430e-b8a7-24d323c7c07c" x="-8" y="270" width="156" height="30" fontSize="15.0">
+                <text><![CDATA[No. of days approved:]]></text>
+            </element>
+            <element kind="textField" uuid="9cdde96e-69e8-46d7-914c-6f9874b8103e" x="150" y="270" width="100" height="30" fontSize="15.0">
+                <expression><![CDATA[$F{numberOfDaysApproved}]]></expression>
+            </element>
+            <element kind="staticText" uuid="baabff06-f8b2-4414-82e1-a303cf1b3b2d" x="260" y="270" width="159" height="30" fontSize="15.0">
+                <text><![CDATA[Commencement date:]]></text>
+            </element>
+            <element kind="textField" uuid="c1539adb-eebb-4510-9c1d-ca02a2ffdeb3" x="420" y="270" width="165" height="30" fontSize="15.0">
+                <expression><![CDATA[$F{commencementDate}]]></expression>
+            </element>
+            <element kind="staticText" uuid="655e38fb-084e-48d1-b5be-a4aefd042132" x="-3" y="310" width="69" height="30" fontSize="15.0">
+                <text><![CDATA[End date:]]></text>
+            </element>
+            <element kind="textField" uuid="3cfa82f9-17cd-464d-bc78-b5943e7c3144" x="70" y="310" width="211" height="30" fontSize="15.0">
+                <expression><![CDATA[$F{endDate}]]></expression>
+            </element>
+            <element kind="staticText" uuid="e256544a-81c5-445f-a2ea-970505cf1ddc" x="290" y="310" width="118" height="30" fontSize="15.0">
+                <text><![CDATA[Resumption date:]]></text>
+            </element>
+            <element kind="textField" uuid="a88ec2a5-e3bf-4b62-9f52-5165e6e5e729" x="414" y="310" width="156" height="30" fontSize="15.0">
+                <expression><![CDATA[$F{resumptionDate}]]></expression>
+            </element>
+            <element kind="textField" uuid="a4b28277-64bf-49b3-b0c3-1215d659dded" x="75" y="340" width="266" height="30" fontSize="15.0">
+                <expression><![CDATA[$F{medSupName}]]></expression>
+            </element>
+            <element kind="textField" uuid="991ca44f-573d-4294-8719-8f5a6da88be5" x="365" y="340" width="262" height="30" fontSize="15.0">
+                <expression><![CDATA[$F{dateApproved}]]></expression>
+            </element>
+            <element kind="staticText" uuid="44f155ee-fdfa-491f-9697-b42b5d83ef40" x="-5" y="370" width="235" height="30" fontSize="15.0" hTextAlign="Center">
+                <text><![CDATA[Name of Head]]></text>
+            </element>
+            <element kind="staticText" uuid="f5cb84d2-7f63-4362-b315-514abb912233" x="289" y="370" width="255" height="30" fontSize="15.0" hTextAlign="Center">
+                <text><![CDATA[Date]]></text>
+            </element>
+        </band>
+    </detail>
+</jasperReport>

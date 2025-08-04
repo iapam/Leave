@@ -1,5 +1,6 @@
 package com.ibm.hr_pj.Repositories;
 
+import com.ibm.hr_pj.Models.Departments;
 import com.ibm.hr_pj.Models.Leave_RequestModel;
 import com.ibm.hr_pj.Models.Login;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,14 +16,15 @@ public interface LeaveRequestModelRepository extends JpaRepository<Leave_Request
     Leave_RequestModel findLeave_RequestModelById(Long id);
     @Modifying
     @Transactional
-    @Query("update Leave_RequestModel set unitHeadStatus=:unitHeadStatus,replacementNeeded=:replacement," +
+    @Query("update Leave_RequestModel set supervisorStatus=:SupervisorStatus,replacementNeeded=:replacement," +
             "statusUpdateDateU=:updateDate,reasons=:reasons,numberOfDays=:numberOfDays where id=:leaveID")
-    void updateUnitHeadStatusApproved(String unitHeadStatus, boolean replacement,
+    void updateUnitHeadStatusApproved(String SupervisorStatus, boolean replacement,
                               LocalDate updateDate,Long leaveID,String reasons,long numberOfDays);
     @Modifying
     @Transactional
-    @Query("update Leave_RequestModel set unitHeadStatus=:unitHeadStatus," +
+    @Query("update Leave_RequestModel set supervisorStatus=:SupervisorStatus," +
             "reasons=:reason,statusUpdateDateU=:updateDate,endDate=:endDate,replacementNeeded=:replacement where id=:leaveID")
-    void updateUnitHeadStatusDenied(String unitHeadStatus, String reason,
+    void updateUnitHeadStatusDenied(String SupervisorStatus, String reason,
                                       LocalDate updateDate,Long leaveID,LocalDate endDate, boolean replacement);
+    List<Leave_RequestModel> findLeave_RequestModelByDepartmentAndSupervisorStatus(Departments department, String supervisorStatus);
 }

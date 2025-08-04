@@ -11,4 +11,5 @@ public class LeaveRequest {
     private String startDate;
     private String endDate;
     private String leaveType;
+    private long remainingDate;
 }

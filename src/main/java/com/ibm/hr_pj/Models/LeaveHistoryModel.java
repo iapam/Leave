@@ -1,9 +1,6 @@
 package com.ibm.hr_pj.Models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,13 +21,17 @@ public class LeaveHistoryModel {
     private String name;
     private LocalDate startDate;
     private LocalDate endDate;
-    private LocalDateTime dateApplied;
+    private String dateApplied;
     private String leaveType;
     private String phoneNumber;
     private String status;
     private String employeeId;
+    private String endedDate;
+    @ManyToOne
+    @JoinColumn
+    private Leave_RequestModel leave_requestModel;
 
-    public LeaveHistoryModel(String name, LocalDate startDate, LocalDate endDate, LocalDateTime dateApplied, String leaveType, String phoneNumber, String status,String employeeId) {
+    public LeaveHistoryModel(String name, LocalDate startDate, LocalDate endDate, String dateApplied, String leaveType, String phoneNumber, String status,String employeeId,Leave_RequestModel leave_requestModel) {
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -39,5 +40,6 @@ public class LeaveHistoryModel {
         this.phoneNumber = phoneNumber;
         this.status = status;
         this.employeeId=employeeId;
+        this.leave_requestModel=leave_requestModel;
     }
 }

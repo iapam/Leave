@@ -11,10 +11,17 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class StatusUpdateDto {
     private Long leaveId;
-    private String unit;
+    private String department;
     private String status;
     private String updateDate;
     private String endDate;
     private String reason;
     private boolean replacementNeeded;
+
+    public StatusUpdateDto(Long leaveId, String status,String department,boolean replacementNeeded) {
+        this.leaveId = leaveId;
+        this.status = status;
+        this.department=department;
+        this.replacementNeeded=replacementNeeded;
+    }
 }

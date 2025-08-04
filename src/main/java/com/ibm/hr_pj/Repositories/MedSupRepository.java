@@ -7,11 +7,15 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 
 public interface MedSupRepository extends JpaRepository<MedSupApprovalModel,Long> {
     MedSupApprovalModel findByLeaveId(Leave_RequestModel leaveRequestModel);
     @Modifying
     @Transactional
-    @Query("update MedSupApprovalModel set status=:status where id=:id")
-    void updateMedSupApprovalModel(Long id,String status);
+    @Query("update MedSupApprovalModel set status=:status where leaveId=:id")
+    void updateMedSupApprovalModel(Leave_RequestModel id,String status);
+    List<MedSupApprovalModel> findMedSupApprovalModelByStatus(String status);
 }
+
