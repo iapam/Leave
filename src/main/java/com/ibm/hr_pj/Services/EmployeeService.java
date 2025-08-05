@@ -488,5 +488,28 @@ public List<AllEmployeesDetailsDto> allEmployees(){
     }
     return allEmployeesDetailsDtos;
 }
-
+public List<EmployeesOnLeaveDto> employeesOnLeaveDetails(){
+    List<LeaveHistoryModel>allApprovedLeaves=leaveHistoryRepository.findAll();
+    List<EmployeesOnLeaveDto>employeesOnLeaveDtos=new ArrayList<>();
+    for(LeaveHistoryModel allLeaves:allApprovedLeaves){
+        if(allLeaves.getStatus().equals("onLeave")){
+            EmployeesOnLeaveDto employeesOnLeaveDto=new EmployeesOnLeaveDto();
+            long numberOfDaysConsumed=leaveDaysCalculator(allLeaves.getStartDate(),LocalDate.now());
+            Leave_RequestModel leaveRequestModel=leaveRequestModelRepository.findLeave_RequestModelById(allLeaves.getLeave_requestModel().getId());
+            EmployeeDetail employeeDetail=employeeDetailsRepository.findEmployeeDetailsByLogin(leaveRequestModel.getLogin());
+            Unit unit=unitsRepository.findByUnitId(employeeDetail.getUnitId().getUnitId());
+            long numberOfDaysRemaining=leaveRequestModel.getNumberOfDays()-numberOfDaysConsumed;
+            employeesOnLeaveDto.setEmployeeId(leaveRequestModel.getLogin().getEmployeeId());
+            employeesOnLeaveDto.setName(employeeDetail.getName());
+            employeesOnLeaveDto.setUnit(unit.getUnitName());
+            employeesOnLeaveDto.setNumberOfDaysRemaining(numberOfDaysRemaining);
+            employeesOnLeaveDto.setAppliedDate(leaveRequestModel.getDateApplied());
+            employeesOnLeaveDto.setCommencementDate(leaveRequestModel.getStartDate());
+            employeesOnLeaveDto.setEndDate(leaveRequestModel.getEndDate());
+            employeesOnLeaveDto.setResumptionDate(leaveRequestModel.getEndDate().plusDays(1));
+            employeesOnLeaveDtos.add(employeesOnLeaveDto);
+        }
+    }
+    return employeesOnLeaveDtos;
+}
 }

@@ -129,4 +129,10 @@ public String allEmployeesDetails(Model model){
       model.addAttribute("allEmployeesDetailsDtos",allEmployeesDetailsDtos);
   return "/AllEmployeesTable";
 }
+@GetMapping("/hr/employees/on/leave/table")
+public String employeesOnLeaveDetails(Model model){
+        List<EmployeesOnLeaveDto>employeesOnLeave=employeeService.employeesOnLeaveDetails();
+        model.addAttribute("employeesOnLeave",employeesOnLeave);
+        return "/EmployeesOnLeaveDetailsTable";
+}
 }

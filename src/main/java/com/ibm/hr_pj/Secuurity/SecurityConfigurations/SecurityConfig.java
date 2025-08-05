@@ -31,7 +31,7 @@ public class SecurityConfig {
                 .hasAnyAuthority("ACCOUNTANT","ADMINISTRATOR","NURSE_MANAGER"," CLINICAL_COORDINATOR")
                 .requestMatchers("/medsup/dashboard/page")
                 .hasAuthority("MEDSUP")
-                .requestMatchers("/HR/dashboard/page","/hr/overdue/leaves/table","/hr/ended/leaves/table","/hr/all/employees/table")
+                .requestMatchers("/HR/dashboard/page","/hr/overdue/leaves/table","/hr/ended/leaves/table","/hr/all/employees/table","/hr/employees/on/leave/table")
                 .hasAuthority("HR")
                 .anyRequest()
                 .authenticated()

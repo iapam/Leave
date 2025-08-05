@@ -566,11 +566,12 @@ text-decoration:none;
 
                 </div>
                 <div class="card">
+                    <a href="/hr/employees/on/leave/table" style="text-decoration: none">
                     <div>
                         <div class="numbers"><p th:text="${hrStats.getNumberOfEmployeeOnLeave()}"></p></div>
                         <div class="cardName">Employees On Leave</div>
                     </div>
-
+                    </a>
                     <div class="iconBx">
                         <ion-icon name="timer-outline"></ion-icon>
                     </div>
@@ -654,21 +655,21 @@ text-decoration:none;
                     <table>
                         <thead>
                             <tr>
-                                <td>Name</td>
-                                <td>Number Of Days</td>
-                                <td>Commencement Date</td>
-                                <td>Resumption Date</td>
-                                <td>End Date</td>
+                                <td style="text-align: center">Name</td>
+                                <td style="text-align: center">Number Of Days</td>
+                                <td style="text-align: center">Commencement Date</td>
+                                <td style="text-align: center">End Date</td>
+                                <td style="text-align: center">Resumption Date</td>
                             </tr>
                         </thead>
 
                         <tbody>
                             <tr th:each="medApprovedLeave:${medApprovedLeave}">
-                                <td th:text="${medApprovedLeave.getName()}"></td>
-                                <td th:text="${medApprovedLeave.getNumberOfDaysApproved()}"></td>
-                                <td th:text="${medApprovedLeave.getCommencementDate()}"></td>
-                                <td th:text="${medApprovedLeave.getResumptionDate()}"></td>
-                                <td th:text="${medApprovedLeave.getEndDate()}"></td>
+                                <td th:text="${medApprovedLeave.getName()}" style="text-align: center"></td>
+                                <td th:text="${medApprovedLeave.getNumberOfDaysApproved()}" style="text-align: center"></td>
+                                <td th:text="${medApprovedLeave.getCommencementDate()}" style="text-align: center"></td>
+                                <td th:text="${medApprovedLeave.getEndDate()}" style="text-align: center"></td>
+                                <td th:text="${medApprovedLeave.getResumptionDate()}" style="text-align: center"></td>
                                 <td>
                                 <td><a th:href="${'/print/leave/form/'+medApprovedLeave.getDepartmentsId()+'/'+medApprovedLeave.getEmployeeDetailsID()+'/'+medApprovedLeave.getId()}" style="
                                     text-align: center;
